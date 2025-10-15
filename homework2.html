@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics Homework II</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0a1f44, #061a35);
+      color: #e0e6f0;
+      padding: 60px 40px;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    h1 {
+      color: #8cb9ff;
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      color: #a4c8ff;
+      font-size: 1.5rem;
+      margin: 25px 0 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    h3 {
+      color: #5aa3ff;
+      font-size: 1.2rem;
+      margin: 20px 0 10px;
+    }
+
+    p {
+      color: #c7d4ec;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .intro, .cards {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px rgba(33, 114, 255, 0.4);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    table caption {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #8cb9ff;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    th {
+      background-color: rgba(33, 114, 255, 0.2);
+      color: #a4c8ff;
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #1e5bb8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 12px 24px;
+      transition: background-color 0.3s, transform 0.2s;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background-color: #3c8df6;
+      transform: scale(1.05);
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .code-block {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      border-left: 4px solid #3c8df6;
+    }
+
+    .code-block code {
+      color: #e0e6f0;
+      line-height: 1.5;
+    }
+
+    .highlight {
+      color: #ffcc00;
+      font-weight: bold;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .mysql-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 40px 0;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .mysql-section h2 {
+      color: #ff9966;
+      border-bottom: 1px solid rgba(255, 153, 102, 0.3);
+    }
+
+    .mysql-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .mysql-table th {
+      background-color: rgba(255, 153, 102, 0.2);
+      color: #ff9966;
+    }
+
+    .mysql-table th, .mysql-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mysql-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .sql-keyword {
+      color: #ff9966;
+      font-weight: bold;
+    }
+
+    .sql-comment {
+      color: #6a9955;
+    }
+
+    .sql-string {
+      color: #ce9178;
+    }
+
+    .sql-function {
+      color: #dcdcaa;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 4px solid #3c8df6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Statistics and Cybersecurity — Homework II</h1>
+
+  <div class="intro">
+    <h2>Explaining the Concept of Dataset and Distribution</h2>
+
+    <div class="section">
+      <h3>Dataset</h3>
+      <p>A dataset is a structured collection of related data that is organized so it can be easily accessed, managed, and analyzed.
+          Think of it as a table in which:
+          Rows represent individual items or observations (for example, each person, transaction, or login attempt).
+          Columns represent the different attributes or variables describing each item (for example, name, age, IP address, or login time).</p>
+    </div>
+
+    <div class="section">
+      <h3>Distribution</h3>
+      <p>A distribution describes how the values of a variable are spread out or occur within a dataset.
+        It tells you how often certain values appear
+        In statistics, distributions help you understand patterns in data — such as averages, variability, and whether values are concentrated or spread out.</p>
+    </div>
+
+    <div class="section">
+      <h3>Example</h3>
+      <table aria-describedby="usage-desc">
+        <caption id="usage-desc">Employees' Daily Computer Usage (in Hours)</caption>
+        <thead>
+          <tr>
+            <th>EmployeeID</th>
+            <th>Department</th>
+            <th>HoursUsed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>E001</td>
+            <td>HR</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>E002</td>
+            <td>Finance</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td>E003</td>
+            <td>IT</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>E004</td>
+            <td>HR</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>E005</td>
+            <td>IT</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>E006</td>
+            <td>Finance</td>
+            <td>6</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Most employees use their computers between 5 and 7 hours per day, while fewer work for very short or very long hours.
+      This distribution helps identify typical usage patterns and detect outliers — for instance, unusually high computer usage might suggest overtime work or possible unauthorized activity.</p>
+    </div>
+  </div>
+
+  <div class="mysql-section">
+    <h2>MySQL Database Implementation</h2>
+    
+    <div class="section">
+      <h3>Creating the Database and Table</h3>
+      <p>Let's implement our employee computer usage dataset in MySQL:</p>
+      
+      <div class="code-block">
+        <code>
+<span class="sql-comment">-- Create the database</span><br>
+<span class="sql-keyword">CREATE DATABASE</span> company_usage;<br><br>
+
+<span class="sql-comment">-- Use the database</span><br>
+<span class="sql-keyword">USE</span> company_usage;<br><br>
+
+<span class="sql-comment">-- Create the employees table</span><br>
+<span class="sql-keyword">CREATE TABLE</span> employees (<br>
+&nbsp;&nbsp;EmployeeID <span class="sql-keyword">VARCHAR</span>(10) <span class="sql-keyword">PRIMARY KEY</span>,<br>
+&nbsp;&nbsp;Department <span class="sql-keyword">VARCHAR</span>(50) <span class="sql-keyword">NOT NULL</span>,<br>
+&nbsp;&nbsp;HoursUsed <span class="sql-keyword">INT</span> <span class="sql-keyword">NOT NULL</span><br>
+);<br><br>
+
+<span class="sql-comment">-- Insert sample data</span><br>
+<span class="sql-keyword">INSERT INTO</span> employees (EmployeeID, Department, HoursUsed) <span class="sql-keyword">VALUES</span><br>
+(<span class="sql-string">'E001'</span>, <span class="sql-string">'HR'</span>, 5),<br>
+(<span class="sql-string">'E002'</span>, <span class="sql-string">'Finance'</span>, 7),<br>
+(<span class="sql-string">'E003'</span>, <span class="sql-string">'IT'</span>, 9),<br>
+(<span class="sql-string">'E004'</span>, <span class="sql-string">'HR'</span>, 4),<br>
+(<span class="sql-string">'E005'</span>, <span class="sql-string">'IT'</span>, 8),<br>
+(<span class="sql-string">'E006'</span>, <span class="sql-string">'Finance'</span>, 6);
+        </code>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h3>Querying the Data for Statistical Analysis</h3>
+      
+      <div class="code-block">
+        <code>
+<span class="sql-comment">-- Get the univariate distribution for Department</span><br>
+<span class="sql-keyword">SELECT</span> Department, <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> Frequency<br>
+<span class="sql-keyword">FROM</span> employees<br>
+<span class="sql-keyword">GROUP BY</span> Department<br>
+<span class="sql-keyword">ORDER BY</span> Frequency <span class="sql-keyword">DESC</span>;<br><br>
+
+<span class="sql-comment">-- Get the univariate distribution for HoursUsed</span><br>
+<span class="sql-keyword">SELECT</span> HoursUsed, <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> Frequency<br>
+<span class="sql-keyword">FROM</span> employees<br>
+<span class="sql-keyword">GROUP BY</span> HoursUsed<br>
+<span class="sql-keyword">ORDER BY</span> HoursUsed;<br><br>
+
+<span class="sql-comment">-- Get grouped hours range distribution</span><br>
+<span class="sql-keyword">SELECT</span><br>
+&nbsp;&nbsp;<span class="sql-keyword">CASE</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sql-keyword">WHEN</span> HoursUsed <span class="sql-keyword">BETWEEN</span> 0 <span class="sql-keyword">AND</span> 4 <span class="sql-keyword">THEN</span> <span class="sql-string">'0-4 hours'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sql-keyword">WHEN</span> HoursUsed <span class="sql-keyword">BETWEEN</span> 5 <span class="sql-keyword">AND</span> 7 <span class="sql-keyword">THEN</span> <span class="sql-string">'5-7 hours'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sql-keyword">WHEN</span> HoursUsed <span class="sql-keyword">BETWEEN</span> 8 <span class="sql-keyword">AND</span> 10 <span class="sql-keyword">THEN</span> <span class="sql-string">'8-10 hours'</span><br>
+&nbsp;&nbsp;<span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> HoursRange,<br>
+&nbsp;&nbsp;<span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> NumberOfEmployees<br>
+<span class="sql-keyword">FROM</span> employees<br>
+<span class="sql-keyword">GROUP BY</span> HoursRange<br>
+<span class="sql-keyword">ORDER BY</span> HoursRange;<br><br>
+
+<span class="sql-comment">-- Get bivariate distribution (Department vs Hours Range)</span><br>
+<span class="sql-keyword">SELECT</span><br>
+&nbsp;&nbsp;Department,<br>
+&nbsp;&nbsp;<span class="sql-function">SUM</span>(<span class="sql-keyword">CASE</span> <span class="sql-keyword">WHEN</span> HoursUsed <span class="sql-keyword">BETWEEN</span> 0 <span class="sql-keyword">AND</span> 4 <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> <span class="sql-string">'0-4 hours'</span>,<br>
+&nbsp;&nbsp;<span class="sql-function">SUM</span>(<span class="sql-keyword">CASE</span> <span class="sql-keyword">WHEN</span> HoursUsed <span class="sql-keyword">BETWEEN</span> 5 <span class="sql-keyword">AND</span> 7 <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> <span class="sql-string">'5-7 hours'</span>,<br>
+&nbsp;&nbsp;<span class="sql-function">SUM</span>(<span class="sql-keyword">CASE</span> <span class="sql-keyword">WHEN</span> HoursUsed <span class="sql-keyword">BETWEEN</span> 8 <span class="sql-keyword">AND</span> 10 <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> <span class="sql-string">'8-10 hours'</span>,<br>
+&nbsp;&nbsp;<span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> Total<br>
+<span class="sql-keyword">FROM</span> employees<br>
+<span class="sql-keyword">GROUP BY</span> Department<br>
+<span class="sql-keyword">ORDER BY</span> Department;
+        </code>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h3>Query Results</h3>
+      
+      <h4>Department Distribution</h4>
+      <table class="mysql-table">
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Finance</td><td>2</td></tr>
+          <tr><td>HR</td><td>2</td></tr>
+          <tr><td>IT</td><td>2</td></tr>
+        </tbody>
+      </table>
+      
+      <h4>Hours Range Distribution</h4>
+      <table class="mysql-table">
+        <thead>
+          <tr>
+            <th>Hours Range</th>
+            <th>Number of Employees</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>0-4 hours</td><td>1</td></tr>
+          <tr><td>5-7 hours</td><td>3</td></tr>
+          <tr><td>8-10 hours</td><td>2</td></tr>
+        </tbody>
+      </table>
+      
+      <h4>Bivariate Distribution</h4>
+      <table class="mysql-table">
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>0-4 hours</th>
+            <th>5-7 hours</th>
+            <th>8-10 hours</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Finance</td><td>0</td><td>2</td><td>0</td><td>2</td></tr>
+          <tr><td>HR</td><td>1</td><td>1</td><td>0</td><td>2</td></tr>
+          <tr><td>IT</td><td>0</td><td>0</td><td>2</td><td>2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>1. Computing the K univariate distribution</h3>
+      <h4>Main Dataset: Employees' Daily Computer Usage (in Hours)</h4>
+      <table>
+        <caption>Dataset</caption>
+        <thead>
+          <tr>
+            <th>EmployeeID</th>
+            <th>Department</th>
+            <th>HoursUsed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>E001</td><td>HR</td><td>5</td></tr>
+          <tr><td>E002</td><td>Finance</td><td>7</td></tr>
+          <tr><td>E003</td><td>IT</td><td>9</td></tr>
+          <tr><td>E004</td><td>HR</td><td>4</td></tr>
+          <tr><td>E005</td><td>IT</td><td>8</td></tr>
+          <tr><td>E006</td><td>Finance</td><td>6</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Univariate Distribution 1 — Department</h4>
+      <table>
+        <caption>Distribution of Departments</caption>
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>HR</td><td>2</td></tr>
+          <tr><td>Finance</td><td>2</td></tr>
+          <tr><td>IT</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Interpretation:</strong> Each department has an equal number of employees (2 each).</p>
+
+      <h4>Univariate Distribution 2 — HoursUsed</h4>
+      <table>
+        <caption>Distribution of Hours Used</caption>
+        <thead>
+          <tr>
+            <th>HoursUsed</th>
+            <th>Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>1</td></tr>
+          <tr><td>5</td><td>1</td></tr>
+          <tr><td>6</td><td>1</td></tr>
+          <tr><td>7</td><td>1</td></tr>
+          <tr><td>8</td><td>1</td></tr>
+          <tr><td>9</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Interpretation:</strong> Each employee used their computer for a different number of hours.</p>
+
+      <h4>Univariate Distribution 3 — Grouped Hours Range</h4>
+      <table>
+        <caption>Distribution of Hours Range</caption>
+        <thead>
+          <tr>
+            <th>Hours Range</th>
+            <th>Number of Employees</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>0–4 hours</td><td>1</td></tr>
+          <tr><td>5–7 hours</td><td>3</td></tr>
+          <tr><td>8–10 hours</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Interpretation:</strong> Most employees (3) used their computers between 5 and 7 hours per day, showing this as the most common usage range.</p>
+    </div>
+
+    <div class="card">
+      <h3>2. Compute a bivariate distribution</h3>
+      <table>
+        <caption>Bivariate Distribution Table</caption>
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>0–4 hours</th>
+            <th>5–7 hours</th>
+            <th>8–10 hours</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HR</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Finance</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>IT</td>
+            <td>0</td>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td>1</td>
+            <td>3</td>
+            <td>2</td>
+            <td>6</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Interpretation:</strong> HR employees split between low and medium usage, Finance employees all in medium range, IT employees all in high usage. This table shows the relationship between department and computer usage patterns.</p>
+    </div>
+
+    <div class="card">
+      <h3>3. Text Analysis</h3>
+      <p>Example of text taken: "DATA SECURITY IS VERY IMPORTANT IN MODERN SYSTEMS. PROTECTING INFORMATION IS ESSENTIAL TO PREVENT ATTACKS."</p>
+      <p>Removing Spaces: "DATASECURITYISVERYIMPORTANTINMODERNSYSTEMSPROTECTINGINFORMATIONISESSENTIALTOPREVENTATTACKS"</p>
+      <table>
+        <caption>Frequency of Each Letter</caption>
+        <thead>
+          <tr>
+            <th>Letter</th>
+            <th>Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>9</td></tr>
+          <tr><td>B</td><td>0</td></tr>
+          <tr><td>C</td><td>5</td></tr>
+          <tr><td>D</td><td>2</td></tr>
+          <tr><td>E</td><td>9</td></tr>
+          <tr><td>F</td><td>1</td></tr>
+          <tr><td>G</td><td>1</td></tr>
+          <tr><td>H</td><td>0</td></tr>
+          <tr><td>I</td><td>8</td></tr>
+          <tr><td>J</td><td>0</td></tr>
+          <tr><td>K</td><td>1</td></tr>
+          <tr><td>L</td><td>1</td></tr>
+          <tr><td>M</td><td>3</td></tr>
+          <tr><td>N</td><td>6</td></tr>
+          <tr><td>O</td><td>4</td></tr>
+          <tr><td>P</td><td>3</td></tr>
+          <tr><td>Q</td><td>0</td></tr>
+          <tr><td>R</td><td>6</td></tr>
+          <tr><td>S</td><td>9</td></tr>
+          <tr><td>T</td><td>8</td></tr>
+          <tr><td>U</td><td>2</td></tr>
+          <tr><td>V</td><td>2</td></tr>
+          <tr><td>W</td><td>0</td></tr>
+          <tr><td>X</td><td>0</td></tr>
+          <tr><td>Y</td><td>1</td></tr>
+          <tr><td>Z</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>4. Applying Caesar Cipher</h3>
+      <p>The Caesar Cipher is a substitution cipher, it replaces each letter with another that is a fixed number of positions away in the alphabet.</p>
+      <p>Choosing a shift: 4</p>
+      <p>Example shifting: A → E, B → F, C → G, D → H</p>
+      <p>Encrypted Text: HEXEWIGYVMWXMWZIVCSTQTSXMRXMRHISIRVWAQWIXWTVXIGXMRKMRJSVQEXMSRMWIWWIRXMEPTTIVZIRXAEXEO</p>
+    </div>
+
+    <div class="card">
+      <h3>5. Decrypting Caesar Cipher</h3>
+      <div class="section">
+        <h4>Step 1 — Original Text</h4>
+        <p>Before encryption, the paragraph is:</p>
+        <pre>DATA SECURITY IS VERY IMPORTANT IN MODERN SYSTEMS. PROTECTING INFORMATION IS ESSENTIAL TO PREVENT ATTACKS.</pre>
+        <p>After removing spaces and punctuation:</p>
+        <pre>DATASECURITYISVERYIMPORTANTINMODERNSYSTEMSPROTECTINGINFORMATIONISESSENTIALTOPREVENTATTACKS</pre>
+      </div>
+
+      <div class="section">
+        <h4>Step 2 — Encrypted Text (Unknown Shift)</h4>
+        <p>We apply a Caesar cipher with an unknown shift (later discovered to be +4). The encrypted text is:</p>
+        <pre>HEXEWIGYVMWXMWZIVCSTQTVXMRXMRSRIVQWXCQVSXMRKMRJSVQEXMSRMWIWWIRXMEPXSTVIZIRXEXXEGOW</pre>
+      </div>
+
+      <div class="section">
+        <h4>Step 3 — Frequency Analysis of Ciphertext</h4>
+        <p>We count how often each letter appears in the encrypted text:</p>
+        <table>
+          <caption>Letter Frequency in Ciphertext</caption>
+          <thead>
+            <tr><th>Letter</th><th>Frequency</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A</td><td>0</td></tr>
+            <tr><td>B</td><td>0</td></tr>
+            <tr><td>C</td><td>4</td></tr>
+            <tr><td>D</td><td>0</td></tr>
+            <tr><td>E</td><td>8</td></tr>
+            <tr><td>F</td><td>0</td></tr>
+            <tr><td>G</td><td>2</td></tr>
+            <tr><td>H</td><td>2</td></tr>
+            <tr><td>I</td><td>9</td></tr>
+            <tr><td>J</td><td>0</td></tr>
+            <tr><td>K</td><td>1</td></tr>
+            <tr><td>L</td><td>0</td></tr>
+            <tr><td>M</td><td>6</td></tr>
+            <tr><td>N</td><td>2</td></tr>
+            <tr><td>O</td><td>1</td></tr>
+            <tr><td>P</td><td>1</td></tr>
+            <tr><td>Q</td><td>3</td></tr>
+            <tr><td>R</td><td>3</td></tr>
+            <tr><td>S</td><td>6</td></tr>
+            <tr><td>T</td><td>6</td></tr>
+            <tr><td>U</td><td>1</td></tr>
+            <tr><td>V</td><td>6</td></tr>
+            <tr><td>W</td><td>5</td></tr>
+            <tr><td>X</td><td>8</td></tr>
+            <tr><td>Y</td><td>2</td></tr>
+            <tr><td>Z</td><td>2</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Observation:</strong> The letters <code>I, E, X, S, T, V</code> appear most frequently. 
+          In English, the most common letters are <code>E, T, A, O, I, N, S</code>. 
+          We might guess that "I" in the cipher corresponds to "E" in plaintext, suggesting a backward shift of 4.</p>
+      </div>
+
+      <div class="section">
+        <h4>Step 4 — Testing Shift Hypothesis</h4>
+        <p>If we apply a backward shift of 4 (i.e., decrypt by shifting every letter -4 positions):</p>
+        <p>For example:</p>
+        <table>
+          <caption>Example Shift -4</caption>
+          <thead>
+            <tr><th>Cipher</th><th>→</th><th>Plain</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>H</td><td>→</td><td>D</td></tr>
+            <tr><td>E</td><td>→</td><td>A</td></tr>
+            <tr><td>X</td><td>→</td><td>T</td></tr>
+            <tr><td>E</td><td>→</td><td>A</td></tr>
+            <tr><td>W</td><td>→</td><td>S</td></tr>
+          </tbody>
+        </table>
+        <p>This confirms that "HEXEW" becomes "DATAS", which makes sense in English.</p>
+      </div>
+
+      <div class="section">
+        <h4>Step 5 — Fully Decoded Text</h4>
+        <pre>DATA SECURITY IS VERY IMPORTANT IN MODERN SYSTEMS PROTECTING INFORMATION IS ESSENTIAL TO PREVENT ATTACKS</pre>
+      </div>
+
+      <div class="section">
+        <h4>Step 6 — Explanation</h4>
+        <ul>
+          <li>We observed the most frequent letters in the ciphertext.</li>
+          <li>We compared those frequencies with common English letter distributions.</li>
+          <li>We hypothesized that <code>I → E</code>, meaning a shift of 4 backwards.</li>
+          <li>We tested the hypothesis and got readable English — confirming the shift.</li>
+        </ul>
+        <p><strong>Conclusion:</strong> Frequency analysis allowed us to decrypt a Caesar cipher without knowing the key.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <a href="index.html" class="btn">⬅ Back to Home</a>
+  </div>
+</body>
+</html>
