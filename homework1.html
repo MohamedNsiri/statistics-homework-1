@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics Homework I</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0a1f44, #061a35);
+      color: #e0e6f0;
+      padding: 60px 40px;
+      text-align: left;
+    }
+
+    h1 {
+      color: #8cb9ff;
+      font-size: 2rem;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #a4c8ff;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      color: #c7d4ec;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .intro, .cards {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px rgba(33, 114, 255, 0.4);
+    }
+
+    .card h3 {
+      color: #5aa3ff;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #d4e1f7;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #1e5bb8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 12px 24px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #3c8df6;
+      transform: scale(1.05);
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Statistics and Cybersecurity — Homework I</h1>
+
+  <div class="intro">
+    <h2>Introduction</h2>
+    <p>Statistics is highly useful in cybersecurity because it provides the foundation for detecting, analyzing, and preventing cyber threats through data-driven insights. 
+    By applying statistical methods, cybersecurity professionals can identify unusual patterns or anomalies in network traffic that may indicate attacks such as intrusions, malware, or data breaches. 
+    Statistical models help estimate the probability of different types of threats, assess risks, and evaluate the effectiveness of security measures.</p>
+
+    <p>Moreover, techniques like regression, clustering, and hypothesis testing allow analysts to recognize trends, predict future attacks, and make informed decisions to strengthen defenses.
+    In essence, statistics transforms raw security data into meaningful information that enhances situational awareness and improves overall cyber resilience.</p>
+  </div>
+
+  <h2>Roles of Statistics in Cybersecurity</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>1. Threat Detection and Anomaly Analysis</h3>
+      <p>Statistics enables cybersecurity professionals to distinguish normal system behavior from suspicious activity. By analyzing metrics like network traffic volume, login frequency, and packet size distributions, statistical models establish baselines of “normal” behavior. Deviations can indicate potential intrusions or attacks.</p>
+    </div>
+
+    <div class="card">
+      <h3>2. Cryptography and Randomness Testing</h3>
+      <p>Statistics ensures the strength and unpredictability of cryptographic systems. Random number generators used in encryption must produce statistically random sequences; otherwise, attackers could exploit predictable patterns.</p>
+    </div>
+
+    <div class="card">
+      <h3>3. Incident Response and Forensics</h3>
+      <p>During and after cyber incidents, statistical tools help analyze large logs and datasets to trace attack sources, correlate events, and reconstruct timelines.</p>
+    </div>
+
+    <div class="card">
+      <h3>4. Risk Assessment and Management</h3>
+      <p>Statistics is fundamental to quantifying cybersecurity risks. By modeling the probability and impact of security incidents, organizations can prioritize which threats to address first.</p>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <a href="index.html" class="btn">⬅ Back to Home</a>
+  </div>
+</body>
+</html>
