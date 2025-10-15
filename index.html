@@ -1,18 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Website Info</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics Homework Portal</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    h1 { color: #007acc; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0a1f44, #061a35);
+      color: #e0e6f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      padding: 30px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 40px 60px;
+      max-width: 700px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      color: #8cb9ff;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #c7d4ec;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 26px;
+      background-color: #1e5bb8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #3c8df6;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-align: left;
+    }
+
   </style>
 </head>
 <body>
-  <h1>Welcome to Our Website Info Page</h1>
-  <p>This site answers common questions about our platform.</p>
+  <div class="container">
+    <h1>What is Statistics, and Why Can It Be Useful for Cybersecurity?</h1>
+    <p><strong>By:</strong> Mohamed Nsiri</p>
+    <p><strong>Date:</strong> 14 October 2025</p>
 
-  <h2>FAQs</h2>
-  <p><strong>Q:</strong> What is this website about?</p>
-  <p><strong>A:</strong> It explains how our services work.</p>
+    <a href="homework1.html" class="btn">Go to Homework I ➜</a>
+    <a href="homework2.html" class="btn">Go to Homework II ➜</a>
+  </div>
 </body>
 </html>
